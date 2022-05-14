@@ -1,0 +1,29 @@
+package org.zerock.persistence;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import org.junit.Test;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class JDBCTests {
+	@Test
+	public void testConnection()throws Exception{
+		
+		Class clz = Class.forName("oracle.jdbc.driver.OracleDriver");
+		//해당 문자열 클래스를 메모리 상에 로딩함
+		
+		log.info(clz);
+		
+		Connection con = 
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE",
+						"book_ex","book_ex");
+		
+		log.info(con);
+		
+		con.close(); //bad code
+	}
+
+}
