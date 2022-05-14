@@ -16,6 +16,14 @@ public class SampleTest {
 	@Autowired
 	private Restaurant restaurant;
 	
+	@Autowired
+	private SampleHotel hotel;
+	
+	@Test
+	public void testHotel() {
+		log.info(hotel);
+	}
+	
 	@Test
 	public void test1() {
 		System.out.println("Test1...........");
