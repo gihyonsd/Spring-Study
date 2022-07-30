@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.example.mapper.BoardMapper">
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							faclt_nm like '%'||#{keyword}||'%' and
+							category
+							like '%'||#{category}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							faclt_nm like '%'||#{keyword}||'%' and
+							category
+							like '%'||#{category}||'%'
+						</when>
+						<when test="startDate != null and endDate != null">
+						<![CDATA[
+       					 	reservday >= #{startDate} AND reservday <= #{endDate}
+       					]]>and
+							faclt_nm like '%'||#{keyword}||'%' and
+							category like
+							'%'||#{category}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="com.spring.example.domain.BoardVO">
+	
+	<![CDATA[
+	select
+   		*
+   	from
+        (
+        	select /*+INDEX_DESC(tbl_board pk_board) */
+            rownum rn, bno, faclt_nm, imageurl, tel, category, reservday
+            from tbl_board
+            where 	
+    ]]>
+
+		<include refid="criteria"></include>
+		
+		
+	<![CDATA[
+			rownum <= #{pageNum} * #{amount}
+        )
+  	  where rn > (#{pageNum}-1)* #{amount}
+		
+	]]>
+
+	</select>
+	<select id="read" resultType="com.spring.example.domain.BoardVO">
+		select * from tbl_board where bno =
+		#{bno}
+	</select>
+
+	<select id="gettotalCount" resultType="int">
+		select count(*) from tbl_board
+		where
+		<include refid="criteria"></include>
+
+		rownum > 0
+	</select>
+	<select id="getList"
+		resultType="com.spring.example.domain.BoardVO">
+	
+		<![CDATA[
+			select * from tbl_board where rownum > 0
+		]]>
+	</select>
+
+	<insert id="insert">
+		INSERT INTO TEST(bno, testname, testnum)SELECT bno, faclt_nm, tel FROM
+		tbl_board
+		where bno=#{bno}
+	</insert>
+
+</mapper>
