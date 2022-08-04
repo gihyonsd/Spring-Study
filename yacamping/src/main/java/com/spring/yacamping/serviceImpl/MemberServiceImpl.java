@@ -29,7 +29,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberVO readMember(String id) {
-		System.out.println("S : readMember()실행");
 		MemberVO vo = null;
 		
 		try {

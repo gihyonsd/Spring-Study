@@ -1,8 +1,11 @@
 //이메일 도메인 선택 혹은 직접 입력
 function selectEmail(ele){
     var $ele = $(ele);
+    var $email1 = $('input[name=email1]');
     var $email2 = $('input[name=email2]');
+    var $email = $('input[name=email]');
 
+   // var $email = $email1+$email2;
     // '1'인 경우 직접입력
     if($ele.val() == "1"){
         $email2.attr('readonly', false);
@@ -10,8 +13,10 @@ function selectEmail(ele){
     } else {
         $email2.attr('readonly', true);
         $email2.val($ele.val());
+        $email.val($email1.val() + '@' + $email2.val());
     }
 }
+
 
 //주소찾기 및 입력
 function sample6_execDaumPostcode() {
@@ -48,7 +53,7 @@ function sample6_execDaumPostcode() {
                }
                // 조합된 참고항목을 해당 필드에 넣는다.
                document.getElementById("sample6_extraAddress").value = extraAddr;
-           
+
            } else {
                document.getElementById("sample6_extraAddress").value = '';
            }
@@ -91,4 +96,4 @@ function check_pw(){
             document.getElementById('check').style.color='red';
         }
     }
-}
+} 
