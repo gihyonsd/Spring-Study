@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.yacamping.mapper.BoardMapper">
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="startDate != null and endDate != null">
+						<![CDATA[
+       					 	reservday >= #{startDate} AND reservday <= #{endDate}
+       					]]>and addr1 like '%'||#{keyword}||'%' and
+							induty like '%'||#{category}||'%'
+						</when>
+						<when test="keyword">
+							addr1 like '%'||#{keyword}||'%' and
+							induty like '%'||#{category}||'%'
+						</when>
+						<when test="category">
+							addr1 like '%'||#{keyword}||'%' and
+							induty like '%'||#{category}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="com.spring.yacamping.domain.BoardVO">
+	
+	<![CDATA[
+	select
+   		*
+   	from
+        (
+        	select /*+INDEX_DESC(camp_info pk_camp) */
+            rownum rn, campnum, reservday, addr1, facltnm, featurenm, firstimageurl, induty, intro, lineintro, homepage, mapx, mapy
+            from camp_info
+            where 	
+    ]]>
+
+		<include refid="criteria"></include>
+		
+		
+	<![CDATA[
+			rownum <= #{pageNum} * #{amount}
+        )
+  	  where rn > (#{pageNum}-1)* #{amount}
+		
+	]]>
+	</select>
+	<select id="read" resultType="com.spring.yacamping.domain.BoardVO">
+		select * from camp_info where campnum = #{campnum}
+	</select>
+	<select id="getall" resultType="com.spring.yacamping.domain.BoardVO">
+		select * from camp_info
+	</select>
+	<select id="gettotalCount" resultType="int">
+		select count(*) from camp_info
+		where
+		<include refid="criteria"></include>
+
+		rownum > 0
+	</select>
+	<select id="getList"
+		resultType="com.spring.yacamping.domain.BoardVO">
+	
+		<![CDATA[
+			select * from camp_info where rownum > 0
+		]]>
+	</select>
+
+
+</mapper>

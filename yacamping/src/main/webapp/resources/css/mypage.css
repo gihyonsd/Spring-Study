@@ -1,0 +1,192 @@
+/*헤드 타이틀 폰트*/
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*본문 폰트*/
+@font-face {
+  font-family: 'SUIT-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+/*-----------------전체 사이즈 및 색상 시작-----------------*/
+
+/*전체 적용*/
+* {
+  font-family: 'SUIT-Regular';
+  margin: 0 auto;
+}
+
+/*본문 외 배경 영역*/
+body {
+  background-color: #F9F9F9;
+}
+
+/*본문 감싸는 영역(헤더~푸터)*/
+.container {
+  width: 1280px;
+}
+
+/*본문 영역 크기 및 배경*/
+.allcontent {
+  width: 960px;
+  background-color: white;
+}
+
+/*-----------------전체 사이즈 및 색상 끝-----------------*/
+
+/*-----------------헤더 시작-----------------*/
+
+/*헤더 전체 위치 및 크기*/
+header {
+  position: relative;
+  width: 960px;
+}
+
+.head {
+  width: 960px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: #7DB249;
+}
+
+/*로고 이미지*/
+.logo {
+  width: 54px;
+  height: 55px;
+  float: left;
+  position: relative;
+  top: 3px;
+  left: 5px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+/*로고 타이틀*/
+.logotitle {
+  float: left;
+  color: white;
+  font-size: 30px;
+  font-family: 'Cafe24Ssurround';
+  position: relative;
+  top: 14px;
+  left: 3px;
+}
+
+.logotitle:hover {
+  cursor: pointer;
+}
+
+/*로그인 아이콘 이미지*/
+.userlogo {
+  width: 63px;
+  height: 63px;
+  float: right;
+  position: relative;
+  bottom: 2px;
+  right: 5px;
+}
+
+.userlogo:hover {
+  cursor: pointer;
+}
+
+/*마우스 오버 시 드롭다운 메뉴*/
+
+.login ul {
+  list-style: none;
+  width: 150px;
+  float: right;
+}
+
+.login a {
+  text-decoration: none;
+}
+
+.login>li {
+  list-style: none;
+}
+
+.login>li>a {
+  display: block;
+  padding: 0 15px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+}
+
+.login>li:hover .menu {
+  display: block;
+}
+
+.login .menu {
+  display: none;
+  position: absolute;
+  left: 770px;
+  top: 50px;
+  text-align: center;
+}
+
+.login .menu a {
+  display: block;
+  padding: 5px;
+  background-color:rgba(125, 178, 73, 0.7);/*까만색(0,0,0) 80% 불투명도*/
+  color: #fff;
+}
+
+/*-----------------헤더 끝-----------------*/
+
+/*-----------------개인정보 시작-----------------*/
+
+.private {
+  margin-top: 60px;
+  height: 500px;
+}
+
+.user {
+  display: block;
+  position: relative;
+  width: 400px;
+  right: 180px;
+  top: 50px;
+}
+
+.txt {
+  display: inline-block;
+  position: relative;
+  bottom: 25px;
+  right: 20px;
+}
+
+.hi {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.user img {
+  width: 100px;
+  height: 100px;
+
+}
+
+.user a img {
+  border: 1px solid #D9D9D9;
+  border-radius: 50%;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  bottom: 5px;
+  right: 30px;
+  background-color: white;
+}
+
+/*-----------------개인정보 끝-----------------*/
