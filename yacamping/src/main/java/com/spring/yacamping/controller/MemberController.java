@@ -1,14 +1,17 @@
 package com.spring.yacamping.controller;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.spring.yacamping.domain.MemberVO;
 import com.spring.yacamping.serviceImpl.MemberServiceImpl;
 @Controller
 public class MemberController {
@@ -26,5 +29,10 @@ public class MemberController {
 		return path;
 		
 	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST) 
+  	public String update(MemberVO vo) throws Exception {
+  		service.updateMember(vo);
+  		return "redirect:/mypage";
+  }
 
 }

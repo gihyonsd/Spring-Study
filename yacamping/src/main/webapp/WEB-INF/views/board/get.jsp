@@ -34,9 +34,9 @@
       <header class="header">
         <div class="head">
           <!--로고이미지&타이틀-->
-          <img src="${path}/resources/image/logo-1.png" class="logo" alt="로고">
+          <a href="/"><img src="${path}/resources/image/logo-1.png" class="logo" alt="로고">
           <div class="logotitle">야캠핑어때
-          </div>
+          </div></a>
 
  		  <!--로그인아이콘(유저아이콘)-->
           <ul class="login">
@@ -111,7 +111,7 @@
         <br>
         <div class="title">
           <h2>${board.facltnm} </h2>
-          <h4></h4>
+          <h4>${board.tel}</h4>
           <div class="address">
             <input id="myInput" value="${board.addr1 }" readonly>
             <button onclick="copy_to_clipboard()"><img src="${path}/resources/image/copy.png" alt="주소 복사">

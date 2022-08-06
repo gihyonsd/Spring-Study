@@ -1,5 +1,7 @@
 package com.spring.yacamping.domain;
 
+import java.util.Date;
+
 public class MemberVO {
 	private int user_num;
 	private String id;

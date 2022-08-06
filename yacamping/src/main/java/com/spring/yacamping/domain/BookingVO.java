@@ -20,7 +20,7 @@ public class BookingVO {
 	private int audult_no;
 	private int child_no;
 	private Date reservday;
-	private int price;
+	private int totalprice;
 	private String startDate;
 	private String endDate;
 }

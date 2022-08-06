@@ -25,5 +25,5 @@ public class BoardVO {
 	private String mapy;
 	private Date reservday;
 	private int price;
-	
+	private String tel;
 }

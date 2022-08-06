@@ -96,7 +96,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
 }
 
 .checkbox input {
@@ -127,7 +126,6 @@ h2 {
   background:#7DB249;
   color: white;
   font-size: 0.9em;
-  font-weight: bold;
   letter-spacing: 1px;
   
 }
@@ -179,7 +177,6 @@ h2 {
   background-color: #FEE500;
   color: #181600;
   font-size: 0.9em;
-  font-weight: bold;
 }
 
 /*SNS-카카오/네이버 이미지*/
@@ -196,9 +193,9 @@ h2 {
   background-color: #03C75A;
   color: #FFFFFF;
   font-size: 0.9em;
-  font-weight: bold;
 }
 
 .kakao_login:hover, .kakao_login input:hover, .naver_login:hover, .naver_login input:hover {
   cursor: pointer;
 }
+

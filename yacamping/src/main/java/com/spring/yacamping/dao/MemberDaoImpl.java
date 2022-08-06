@@ -28,4 +28,9 @@ public class MemberDaoImpl implements MemberDao {
 		return vo;
 	}
 
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		sql.update(Namespace + ".updateMember", vo);
+	}
+
 }

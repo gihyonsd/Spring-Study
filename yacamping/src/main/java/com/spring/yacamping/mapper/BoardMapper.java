@@ -10,7 +10,6 @@ import com.spring.yacamping.domain.Criteria;
 public interface BoardMapper {
 	
 	
-	
 	public List<BoardVO> getList();
 	
 	public List<BoardVO> getListWithPaging(Criteria cri);
@@ -20,5 +19,5 @@ public interface BoardMapper {
 	public int gettotalCount(Criteria cri);
 	
 	public List<BoardVO> getall(Criteria cri);
-	
+
 }

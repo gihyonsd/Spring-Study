@@ -40,5 +40,10 @@ public class MemberServiceImpl implements MemberService{
 		return vo;
 	}
 
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		memberDao.updateMember(vo);
+	}
+
 
 }

@@ -5,8 +5,8 @@
 <mapper namespace="com.spring.yacamping.mapper.BookingMapper">
 
 	<insert id="insert">
-		INSERT INTO booking(campnum, user_num, reservid, id, facltnm, audult_no, child_no, price, reservday, checkin, checkout)SELECT campnum, user_num, #{reservid}, id, facltnm, #{audult_no}, #{child_no}, price, sysdate, #{startDate}, #{endDate} FROM camp_info, member
+		INSERT INTO booking(campnum, user_num, reservid, id, facltnm, audult_no, child_no, price, reservday, checkin, checkout)SELECT campnum, user_num, #{reservid}, id, facltnm, #{audult_no}, #{child_no}, #{totalprice}, sysdate, #{startDate}, #{endDate} FROM camp_info, member
 		where campnum=#{campnum} and id=#{id}
 	</insert>
-
+	
 </mapper>

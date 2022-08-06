@@ -19,4 +19,8 @@
 		from MEMBER
 		where id=#{id}
 	</select>
+	<update id="updateMember" parameterType="com.spring.yacamping.domain.MemberVO">
+		update member set password=#{password}, nickname=#{nickname}, phone=#{phone}, email=#{email}, address=#{address}
+		where id=#{id}
+	</update>
 </mapper>
