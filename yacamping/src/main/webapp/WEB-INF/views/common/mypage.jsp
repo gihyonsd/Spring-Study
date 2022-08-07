@@ -63,10 +63,20 @@
       <div class="private">
         <div class="user">
           <img src="resources/image/user-private.png" class="person">
+          <c:choose>
+          <c:when test="${not empty sessionScope.nickname }" >
+          <div class="txt">
+            <p class="hi">안녕하세요! ${sessionScope.nickname}님<br></p>
+            <p>야캠핑어때와 즐거운 여행되세요</p>
+          </div>
+          </c:when>
+          <c:otherwise>
           <div class="txt">
             <p class="hi">안녕하세요! ${member.nickname }님<br></p>
             <p>야캠핑어때와 즐거운 여행되세요</p>
           </div>
+          </c:otherwise>
+          </c:choose>
         </div>
       </div>
 
@@ -82,53 +92,69 @@
           <label for="tab1">개인정보</label>
           <input type="radio" id="tab2" name="tabs">
           <label for="tab2">예약목록</label>
+          
           <!--탭 메뉴의 내용부분-->
           <div id="profile" class="tabContent">
-         <form action="/update" method="post" onsubmit="disablesubmit()">
-            <div class="id">
-              <p>아이디</p><input class="empty" type='text' name="id" value="${member.id }" disabled />
-            </div>
-
-            <div class="pw">
-              <p>비밀번호</p><input id='modify_btn1' type='password' name="password" value="${member.password }"  disabled />
-              <button type="button" onclick='btnActive1()'><img src="resources/image/setting.png">수정</button>
-            </div>
-
-            <div class="name">
-              <p>이름</p><input class='empty' type='text' value="${member.name }" disabled />
-            </div>
-
-            <div class="nick">
-              <p>닉네임</p><input id='modify_btn2' name="nickname" type='text' value="${member.nickname }" disabled />
-              <button type="button" onclick='btnActive2()'><img src="resources/image/setting.png">수정</button>
-            </div>
-			<fmt:parseDate var="dateString" value="${member.birth}" pattern="yyyy-MM-dd" />
-            <div class="birth">
-              <p>생년월일</p><input class='empty' type='text' value="<fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd"/>" disabled />
-            </div>
-            <div class="gender">
-              <p>성별</p><input class='empty' type='text' value="${member.gender }" disabled />
-            </div>
-            <div class="phone">
-              <p>전화번호</p><input id='modify_btn3' type='text' name='phone' value="${member.phone }" disabled />
-              <button type="button" onclick='btnActive3()'><img src="resources/image/setting.png">수정</button>
-            </div>
-            <div class="mail">
-              <p>이메일</p><input id='modify_btn4' type='text' name='email' value="${member.email }" disabled />
-              <button type="button" onclick='btnActive4()'><img src="resources/image/setting.png">수정</button>
-            </div>
-            <div class="add">
-              <p>주소</p><input id='modify_btn5' type='text' name='address' value="${member.address }" disabled />
-              <button type="button" onclick='btnActive5()'><img src="resources/image/setting.png">수정</button>
-            </div>
-            <input class="empty" type='text' name="id" value="${member.id }" style="display:none"/>
-
-            <div class="btn">
-              <button class="submit">수정한 내용 저장하기</button>
-             
-            </div>
-            </form>
-          </div>
+		  <c:choose>
+		  	<c:when test="${not empty sessionScope.nickname }">
+		  	카카오 회원 페이지
+		  		<div class="id">
+	              <p>아이디</p><input class="empty" type='text' name="id" value="${sessionScope.id}" disabled />
+	            </div>
+	            <div class="nick">
+	              <p>닉네임</p><input id='modify_btn2' name="nickname" type='text' value="${sessionScope.nickname}" disabled />
+	            </div>
+		  	</c:when>
+		  	<c:otherwise>
+		  	<form action="/update" method="post" onsubmit="disablesubmit()">
+	            <div class="id">
+	              <p>아이디</p><input class="empty" type='text' name="id" value="${member.id }" disabled />
+	            </div>
+	
+	            <div class="pw">
+	              <p>비밀번호</p><input id='modify_btn1' type='password' name="password" value="${member.password }"  disabled />
+	              <button type="button" onclick='btnActive1()'><img src="resources/image/setting.png">수정</button>
+	            </div>
+	
+	            <div class="name">
+	              <p>이름</p><input class='empty' type='text' value="${member.name }" disabled />
+	            </div>
+	
+	            <div class="nick">
+	              <p>닉네임</p><input id='modify_btn2' name="nickname" type='text' value="${member.nickname }" disabled />
+	              <button type="button" onclick='btnActive2()'><img src="resources/image/setting.png">수정</button>
+	            </div>
+				<fmt:parseDate var="dateString" value="${member.birth}" pattern="yyyy-MM-dd" />
+	            <div class="birth">
+	              <p>생년월일</p><input class='empty' type='text' value="<fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd"/>" disabled />
+	            </div>
+	            <div class="gender">
+	              <p>성별</p><input class='empty' type='text' value="${member.gender }" disabled />
+	            </div>
+	            <div class="phone">
+	              <p>전화번호</p><input id='modify_btn3' type='text' name='phone' value="${member.phone }" disabled />
+	              <button type="button" onclick='btnActive3()'><img src="resources/image/setting.png">수정</button>
+	            </div>
+	            <div class="mail">
+	              <p>이메일</p><input id='modify_btn4' type='text' name='email' value="${member.email }" disabled />
+	              <button type="button" onclick='btnActive4()'><img src="resources/image/setting.png">수정</button>
+	            </div>
+	            <div class="add">
+	              <p>주소</p><input id='modify_btn5' type='text' name='address' value="${member.address }" disabled />
+	              <button type="button" onclick='btnActive5()'><img src="resources/image/setting.png">수정</button>
+	            </div>
+	            <input class="empty" type='text' name="id" value="${member.id }" style="display:none"/>
+	
+	            <div class="btn">
+	              <button class="submit">수정한 내용 저장하기</button>
+	            </div>
+	            </form>
+		  	</c:otherwise>
+		  </c:choose>
+	      </div>
+          
+ 
+          
           
           
           <!-----------------개인정보 끝----------------->

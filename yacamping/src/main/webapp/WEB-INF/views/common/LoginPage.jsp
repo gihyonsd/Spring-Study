@@ -209,15 +209,15 @@ h2 {
 
 					<div class="sns_login">
 						<div class="kakao_login">
-							<img src="resources/image/kakao.jpg"><input type="submit"
-								value="카카오 로그인" class="kakao">
+							<img src="resources/image/kakao.jpg"><input type="button"
+								onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=fefb327bbd1259b56dd9f67b9a0bb86d&redirect_uri=http://localhost:8080/kakaoLogin'" value="카카오 로그인"
+								class="kakao">
 						</div>
 						<div class="naver_login">
 							<img src="resources/image/naver.png"><input type="submit"
 								value="네이버 로그인" class="naver">
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</form>

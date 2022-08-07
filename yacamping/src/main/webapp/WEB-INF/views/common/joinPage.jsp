@@ -49,7 +49,7 @@
                 <label for="password">비밀번호</label>
               </h3>
               <span class="input">
-                <input type="password" id="password" name="password" class="enter" maxlength="20" onchange="check_pw()">
+                <input type="password" id="password" name="password" class="enter" maxlength="20" placeholder="숫자를 포함하여 6자 이상 16자 이하로 입력하세요." onchange="check_pw()">
               </span>
 
             </div>
