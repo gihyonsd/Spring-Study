@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>야캠핑어때 캠핑장 리스트</title>
     <link type="text/css" rel="stylesheet" href="${path}/resources/css/list.css">
-    <script src="${path}/resources/js/list.js"></script>
 </head>
 
 <body>
@@ -29,9 +28,8 @@
 
                 <div class="head">
                     <!--로고이미지&타이틀-->
-                    <img src="${path}/resources//image/logo-1.png" class="logo" alt="로고">
-                    <div class="logotitle">야캠핑어때
-                    </div>
+                    <a href="/"><img src="${path}/resources//image/logo-1.png" class="logo" alt="로고">
+                    <div class="logotitle">야캠핑어때 </div></a>
 
  		  <!--로그인아이콘(유저아이콘)-->
           <ul class="login">
@@ -65,13 +63,26 @@
 
             <!-----------------리스트 페이지 시작----------------->
             <!-- 리스트 헤드라인 / 사진 / 캠핑장이름 / 캠핑장 가격 / 한줄 소개 /주소/업종구분(일반야영장/글램핑/카라반/펜션)/ 페이징  -->
-
-			<c:forEach items="${list}" var="board">
+            <script>
+            var img1 = '<c:out value="${list[0].firstimageurl}"/>';
+            var img2 = '<c:out value="${list[0].secondimageurl}"/>';
+            var img3 = '<c:out value="${list[0].thirdimageurl}"/>';
+            var img4 = '<c:out value="${list[1].firstimageurl}"/>';
+            var img5 = '<c:out value="${list[1].secondimageurl}"/>';
+            var img6 = '<c:out value="${list[1].thirdimageurl}"/>';
+            var img7 = '<c:out value="${list[2].firstimageurl}"/>';
+            var img8 = '<c:out value="${list[2].secondimageurl}"/>';
+            var img9 = '<c:out value="${list[2].thirdimageurl}"/>';
+            var img10 = '<c:out value="${list[3].firstimageurl}"/>';
+            var img11 = '<c:out value="${list[3].secondimageurl}"/>';
+            var img12 = '<c:out value="${list[3].thirdimageurl}"/>';
+            </script>
+			<c:forEach items="${list}" var="board" varStatus="theCount">
             <div class="list">
                 <div class="camplist">
-                    <div id="list_image">
-                        <input type="image" class="leftbtn" src="${path}/resources//image/left.png">
-                        <input type="image" class="rightbtn" src="${path}/resources//image/right.png">
+                    <div id="list_image${theCount.count}" style="background-image: url(${board.firstimageurl});">
+                        <input type="image" class="leftbtn${theCount.count}" src="${path}/resources/image/left.png">
+                        <input type="image" class="rightbtn${theCount.count}" src="${path}/resources/image/right.png">
                         <img src="${path}/resources//image/location.png"><span class="location">${board.addr1}</span>
                     </div>
 
@@ -88,12 +99,137 @@
                             </div>
 
                             <p class="able">예약가능 수 : <span style="color: #767676;">해당업체 별도문의</span></p>
-                            <p class="price"><fmt:formatNumber value="${board.price}" pattern="#,###"/>~</p>
+                            <p class="price"><fmt:formatNumber value="${board.price}" pattern="#,###"/>원~</p>
                         </div>
                     </a>
                 </div>
             </div>
+      <script>
+    // 왼쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var leftBtn = document.querySelector(".leftbtn1");
+      var arrImg = [img1, img2, img3];
+      var cntleft = 1;
+      leftBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image1");
+        if (cntleft >= arrImg.length) {
+          cntleft = 0;
+        }
+        cntleft++;
+        mainImg.style.backgroundImage = "url(" + arrImg[cntleft - 1] + ")";
+      }
+    });
+
+    // 오른 쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var rightBtn = document.querySelector(".rightbtn1");
+      var arrImg = [img1, img2, img3];
+      var cntright = arrImg.length;
+      rightBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image1");
+        cntright--;
+        if (cntright < 0) {
+          cntright = arrImg.length - 1;
+        }
+        mainImg.style.backgroundImage = "url(" + arrImg[cntright] + ")";
+      }
+    });
+    // 왼쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var leftBtn = document.querySelector(".leftbtn2");
+      var arrImg = [img4, img5, img6];
+      var cntleft = 1;
+      leftBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image2");
+        if (cntleft >= arrImg.length) {
+          cntleft = 0;
+        }
+        cntleft++;
+        mainImg.style.backgroundImage = "url(" + arrImg[cntleft - 1] + ")";
+      }
+    });
+
+    // 오른 쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var rightBtn = document.querySelector(".rightbtn2");
+      var arrImg = [img4, img5, img6];
+      var cntright = arrImg.length;
+      rightBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image2");
+        cntright--;
+        if (cntright < 0) {
+          cntright = arrImg.length - 1;
+        }
+        mainImg.style.backgroundImage = "url(" + arrImg[cntright] + ")";
+      }
+    });
+    
+    // 왼쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var leftBtn = document.querySelector(".leftbtn3");
+      var arrImg = [img7, img8, img9];
+      var cntleft = 1;
+      leftBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image3");
+        if (cntleft >= arrImg.length) {
+          cntleft = 0;
+        }
+        cntleft++;
+        mainImg.style.backgroundImage = "url(" + arrImg[cntleft - 1] + ")";
+      }
+    });
+
+    // 오른 쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var rightBtn = document.querySelector(".rightbtn3");
+      var arrImg = [img7, img8, img9];
+      var cntright = arrImg.length;
+      rightBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image3");
+        cntright--;
+        if (cntright < 0) {
+          cntright = arrImg.length - 1;
+        }
+        mainImg.style.backgroundImage = "url(" + arrImg[cntright] + ")";
+      }
+    });
+    
+    // 왼쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var leftBtn = document.querySelector(".leftbtn4");
+      var arrImg = [img10, img11, img12];
+      var cntleft = 1;
+      leftBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image4");
+        if (cntleft >= arrImg.length) {
+          cntleft = 0;
+        }
+        cntleft++;
+        mainImg.style.backgroundImage = "url(" + arrImg[cntleft - 1] + ")";
+      }
+    });
+
+    // 오른 쪽 버튼 이미지 클릭 시 동작
+    window.addEventListener("load", function(event) {
+      var rightBtn = document.querySelector(".rightbtn4");
+      var arrImg = [img10, img11, img12];
+      var cntright = arrImg.length;
+      rightBtn.onclick = function () {
+        var mainImg = document.querySelector("#list_image4");
+        cntright--;
+        if (cntright < 0) {
+          cntright = arrImg.length - 1;
+        }
+        mainImg.style.backgroundImage = "url(" + arrImg[cntright] + ")";
+      }
+    });
+  </script>
             </c:forEach>
+            <c:if test="${empty list}">
+			<div class="nolist">
+              <img src="${path}/resources/image/nolist.png">
+            </div>
+			</c:if>
             
 
             <!-----------------리스트 페이지 끝----------------->
@@ -104,7 +240,7 @@
                					<ul>
 						<c:if test="${pageMaker.prev}">
 							<li class="paginate_button previous"><a
-								href="${pageMaker.startPage -1}">Previous</a></li>
+								href="${pageMaker.startPage -1}"><img src="${path}/resources/image/pageleft.png" class="page"></a></li>
 						</c:if>
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
@@ -114,7 +250,7 @@
 						</c:forEach>
 						<c:if test="${pageMaker.next}">
 							<li class="paginate_button next"><a
-								href="${pageMaker.endPage +1 }">Next</a></li>
+								href="${pageMaker.endPage +1 }"><img src="${path}/resources/image/pageright.png" class="page"></a></li>
 						</c:if>
 					</ul>
             </div>
@@ -164,7 +300,7 @@
       </div>
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document)
 			.ready(

@@ -90,6 +90,23 @@ input {
   width: 400px;
 }
 
+.inputid {
+  display: flex;
+  width: 400px;
+  margin-left: 70px;
+}
+
+.doubleid {
+  width: 100px;
+  height: 28px;
+  margin-inline-start: 10px;
+  border: 1px solid #dedede;
+  position: relative;
+  top: 5px;
+}
+
+
+
 input:read-only { 
   background-color: #dedede;
 }

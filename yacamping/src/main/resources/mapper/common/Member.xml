@@ -23,4 +23,32 @@
 		update member set password=#{password}, nickname=#{nickname}, phone=#{phone}, email=#{email}, address=#{address}
 		where id=#{id}
 	</update>
+	<!-- 아이디 중복 체크 -->
+	<select id="idChk" parameterType="MemberVO" resultType="Int">
+		SELECT
+		COUNT(*)
+		FROM MEMBER
+		WHERE ID = #{id}
+	</select>
+	<!-- 아이디 찾기 -->
+	<select id="findid" resultType="com.spring.yacamping.domain.MemberVO">
+		select * from member where name=#{name} and email=#{email}
+	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="findpassword" resultType="com.spring.yacamping.domain.MemberVO">
+		select * from member where id=#{id} and name=#{name} and email=#{email}
+	</select>
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM MEMBER
+		WHERE id = #{id}
+		AND password = #{password}
+	</delete>
+	<!-- 회원탈퇴 패스워드 체크 -->
+	<select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE id = #{id}
+		AND password = #{password}
+	</select>
+	
 </mapper>

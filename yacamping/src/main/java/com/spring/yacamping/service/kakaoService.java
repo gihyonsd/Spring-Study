@@ -47,7 +47,7 @@ public class kakaoService {
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 				StringBuilder sb = new StringBuilder();
 				sb.append("grant_type=authorization_code");
-				sb.append("&client_id=fefb327bbd1259b56dd9f67b9a0bb86d");
+				sb.append("&client_id=9c6a35b4db0980b1f70abdbe87fc48a3");
 				sb.append("&redirect_uri=http://localhost:8080/kakaoLogin");
 				sb.append("&code=" + authorize_code);
 				bw.write(sb.toString());
@@ -145,12 +145,17 @@ public class kakaoService {
 				String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 				// kakao_account
 				String email = kakao_account.getAsJsonObject().get("email").getAsString();
-				
+				// gender
+				String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
+				//birthday
+				String birthday = kakao_account.getAsJsonObject().get("birthday").getAsString();
 
 				// setter이용하여 KakaoVO에 담기
 				userInfo.setKakaoId(id);
 				userInfo.setNickname(nickname);
 				userInfo.setAccount_email(email);
+				userInfo.setGender(gender);
+				userInfo.setBirthday(birthday);
 	
 				
 				

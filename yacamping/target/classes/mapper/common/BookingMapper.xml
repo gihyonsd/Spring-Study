@@ -8,5 +8,16 @@
 		INSERT INTO booking(campnum, user_num, reservid, id, facltnm, audult_no, child_no, price, reservday, checkin, checkout)SELECT campnum, user_num, #{reservid}, id, facltnm, #{audult_no}, #{child_no}, #{totalprice}, sysdate, #{startDate}, #{endDate} FROM camp_info, member
 		where campnum=#{campnum} and id=#{id}
 	</insert>
+	<insert id="insertkakao">
+		INSERT INTO kakaobooking(campnum, user_num, reservid, id, facltnm, audult_no, child_no, price, reservday, checkin, checkout)SELECT campnum, 'kakao', #{reservid}, #{id}, facltnm, #{audult_no}, #{child_no}, #{totalprice}, sysdate, #{startDate}, #{endDate} FROM camp_info
+		where campnum=#{campnum}
+	</insert>
 	
+	<select id="getBooking" resultType="com.spring.yacamping.domain.BookingVO">
+		SELECT * FROM booking WHERE id=#{id} order by reservday
+	</select>
+	
+	<select id="getKakao" resultType="com.spring.yacamping.domain.BookingVO">
+		SELECT reservid, id, facltnm, audult_no, child_no, price, reservday, checkin, checkout FROM kakaobooking WHERE id=#{id}
+	</select>
 </mapper>

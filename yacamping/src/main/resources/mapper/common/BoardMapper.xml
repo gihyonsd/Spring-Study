@@ -40,7 +40,7 @@
    	from
         (
         	select /*+INDEX_DESC(camp_info pk_camp) */
-            rownum rn, campnum, reservday, addr1, facltnm, featurenm, firstimageurl, induty, intro, lineintro, homepage, mapx, mapy, price, tel
+            rownum rn, campnum, reservday, addr1, facltnm, featurenm, firstimageurl, induty, intro, lineintro, homepage, mapx, mapy, price, tel, secondimageurl, thirdimageurl, firthimageurl
             from camp_info
             where 	
     ]]>

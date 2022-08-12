@@ -304,7 +304,7 @@ body {
   color: #3c3646;
   border: 1px solid #ddd;
   border-radius: 3px;
-  background-image: url(/resources/image/down1.png);
+  background-image: url(../image/down1.png);
   background-repeat: no-repeat;
   background-size: 30px 30px;
   background-position: 80px;
@@ -321,7 +321,7 @@ body {
 }
 
 .short {
-  background-image: url(/resources/image/up1.png);
+  background-image: url(../image/up1.png);
 }
 
 /*-----------------캠핑장 소개 끝-----------------*/
@@ -493,8 +493,6 @@ hr {
   color: #7DB249;
 }
 
-
-
 /*-----------------이용안내 중 이용시간 안내 끝-----------------*/
 
 /*-----------------이용안내 중 약도 시작-----------------*/
@@ -582,6 +580,8 @@ button img {
   cursor: pointer;
 }
 
+/*-----------------푸터 끝-----------------*/
+
 /*-----------------예약하기 모달창 시작-----------------*/
 .openBtn {
   background-color: #F9B514;
@@ -614,6 +614,16 @@ button img {
   position: absolute;
   background-color: #fff;
   width: 950px;
+  height: 130px;
+  padding: 15px;
+  bottom: 0;
+  border-radius: 40px 40px 0 0;
+}
+
+.modalBox1 {
+  position: absolute;
+  background-color: #fff;
+  width: 950px;
   height: 80px;
   padding: 15px;
   bottom: 0;
@@ -621,6 +631,13 @@ button img {
 }
 
 .btn_log_close {
+  width: 500px;
+  display: flex;
+  position: relative;
+  top: 30px;
+}
+
+.btn_log_close1 {
   width: 500px;
   display: flex;
   position: relative;
@@ -634,7 +651,21 @@ button img {
   text-align: center;
 }
 
+.modalBox1 p {
+  border-radius: 5px;
+  width: 800px;
+  font-size: 22px;
+  text-align: center;
+}
+
 .modalBox button {
+  width: 200px;
+  height: 35px;
+  color: white;
+  font-size: 17px;
+}
+
+.modalBox1 button {
   width: 200px;
   height: 35px;
   color: white;
@@ -646,12 +677,46 @@ button img {
   color: white;
 }
 
+.btn_log_close1 a {
+  text-decoration: none;
+  color: white;
+}
 
 .hidden {
   display: none;
 }
 
+.inputdate {
+  display: flex;
+  width: 40%;
+  position: relative;
+  top: 20px;
+}
+
+.inputdate input {
+  height: 25px;
+  width: 38%;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff url('../image/calendar2.png') no-repeat right /contain;
+  background-size: 15px 15px;
+  background-position: 3.5cm 6px;
+  transform: translateY(-20%);
+  z-index: 0;
+}
+
+.checkdate {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+
 /*-----------------예약하기 모달창 끝-----------------*/
+
+
+
 
 
 

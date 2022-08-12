@@ -19,7 +19,7 @@
   <!-- 제이쿼리 불러오기 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/2.8.6/clipboard-polyfill.js"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c34b277686c67e06eb17fc958097c2d6"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f2b287d5c416736a802c07ae457f6e0"></script>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 
@@ -35,8 +35,7 @@
         <div class="head">
           <!--로고이미지&타이틀-->
           <a href="/"><img src="${path}/resources/image/logo-1.png" class="logo" alt="로고">
-          <div class="logotitle">야캠핑어때
-          </div></a>
+          <div class="logotitle">야캠핑어때</div></a>
 
  		  <!--로그인아이콘(유저아이콘)-->
           <ul class="login">
@@ -48,7 +47,7 @@
               <li><a href="/Agree">회원가입</a></li>
               <% } else { %>
               <li><a href="/Logout">로그아웃</a></li>
-              <li><a href="#">마이페이지</a></li>
+              <li><a href="/Agree">마이페이지</a></li>
               <% } %>
             </ul>
             </li>
@@ -78,19 +77,19 @@
           <!--섬네일2-->
           <li>
             <a href="#">
-              <img src="${path}/resources/image/c5.jpg" alt="image2">
+              <img src="${board.secondimageurl }" alt="image2">
             </a>
           </li>
           <!--섬네일3-->
           <li>
             <a href="#">
-              <img src="${path}/resources/image/c6.jpg" alt="image3">
+              <img src="${board.thirdimageurl }" alt="image3">
             </a>
           </li>
           <!--섬네일4-->
           <li>
             <a href="#">
-              <img src="${path}/resources/image/c14.jpg" alt="image4">
+              <img src="${board.firthimageurl }" alt="image4">
             </a>
           </li>
         </ul>
@@ -111,14 +110,14 @@
         <br>
         <div class="title">
           <h2>${board.facltnm} </h2>
-          <h4>${board.tel}</h4>
+          <h4>${board.tel }</h4>
           <div class="address">
             <input id="myInput" value="${board.addr1 }" readonly>
             <button onclick="copy_to_clipboard()"><img src="${path}/resources/image/copy.png" alt="주소 복사">
               <p>주소 복사</p>
             </button>
           </div>
-          <div class="price"> <fmt:formatNumber value="${board.price}" pattern="#,###"/> ~</div>
+          <div class="price"> <fmt:formatNumber value="${board.price}" pattern="#,###"/>원~</div>
         </div>
 
         <div class="visit">
@@ -420,21 +419,57 @@
             <button class="openBtn">예약하기</button>
             <div class="modal hidden">
               <div class="bg"></div>
-              <div class="modalBox">
+              <c:choose>
+              <c:when test="${empty setdate.startDate || empty setdate.endDate}">
               <%if (id == null) { %>
+              <div class="modalBox1">
                 <p>야캠핑어때 로그인 후 예약 가능합니다.</p>
-                <div class="btn_log_close">
-                  <button class="gotolog"><a href="/Login">로그인 하러가기</a></button>
+                <div class="btn_log_close1">
+                  <a href="/Login"><button class="gotolog">로그인 하러가기</button></a>
                   <button class="closeBtn">닫기</button>
-                  <% } else { %>
-                  <p>예약을 하려는 캠핑장이 확실하신가요?</p>
-                  <div class="btn_log_close">
-                  <button class="gotobooking"><a href="/booking">예약 하러가기</a></button>
-                  <button class="closeBtn">닫기</button>
-                  <%} %>
-                  
-                </div>
+              	</div>
               </div>
+              <%} else { %>
+              <div class="modalBox">
+              <p>체크인 체크아웃 날짜를 선택해주세요.</p>
+              <form action="/board/getbooking" method="get">
+                <div class="inputdate">
+                  <input type="text" placeholder="체크인" onfocus="(this.type='date')" name="startDate" class="checkdate"> ~ <input
+                    type="text" placeholder="체크아웃" onfocus="(this.type='date')" name="endDate" class="checkdate">
+              	</div> 
+              <div class="btn_log_close">
+                 <input type="hidden" name="campnum" value="${board.campnum}">
+                 <input type="hidden" value="${pageMaker.cri.startDate }">
+                 <input type="hidden" value="${pageMaker.cri.endDate }">
+                 <button class="gotobooking">예약 하러가기</button>
+                 <button  type="button" class="closeBtn">닫기</button>
+              </div>
+              </form>
+              </div>
+              <% } %>
+              </c:when>
+              <c:otherwise>
+              <div class="modalBox1">
+              <%if (id == null) { %>
+              <p>야캠핑어때 로그인 후 예약 가능합니다.</p>
+              <div class="btn_log_close1">
+                  <a href="/Login"><button class="gotolog">로그인 하러가기</button></a>
+                  <button class="closeBtn">닫기</button>
+              </div>
+              <%} else { %>
+              <div class="modalBox1">
+              <p>예약하려는 캠핑장이 확실하신가요?</p>
+                  <div class="btn_log_close1">
+                  <a href="/board/getbooking?campnum=${board.campnum}&&startDate=<fmt:formatDate value="${setdate.startDate}" pattern="yyyy-MM-dd"/>&&endDate=<fmt:formatDate value="${setdate.endDate}" pattern="yyyy-MM-dd"/>"><button class="gotobooking">예약 하러가기</button></a>
+                  <button class="closeBtn">닫기</button>
+                  </div>
+              </div>
+              <% } %>
+              </div>
+              </c:otherwise>
+              </c:choose>
+
+  
             </div>
           </div>
 

@@ -83,7 +83,7 @@ header {
   height: 60px;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 1;
   background-color: #7DB249;
 }
 
@@ -169,7 +169,8 @@ header {
 .login .menu a {
   display: block;
   padding: 5px;
-  background-color:rgba(125, 178, 73, 0.7);/*까만색(0,0,0) 80% 불투명도*/
+  background-color: rgba(125, 178, 73, 0.7);
+  /*까만색(0,0,0) 80% 불투명도*/
   color: #fff;
 }
 
@@ -233,50 +234,187 @@ header {
 
 /*-----------------카테고리 끝-----------------*/
 
-/*-----------------날짜/지역/카테고리 검색 시작-----------------*/
+/*-----------------체크인아웃 검색 시작-----------------*/
 
-/*검색 전체 영역*/
+/*검색 전체 영역 - 버튼 포함*/
 .search {
   margin: 0 auto;
   width: 960px;
   height: 70px;
   display: flex;
-  justify-content: space-around;
 }
 
-/*검색 중 체크인아웃/지역/카테고리 영역*/
+/*검색 중 체크인아웃/지역/카테고리 영역 - 버튼 미포함*/
 .search_box {
   background-color: #E8E0A1;
   border-radius: 5px;
   width: 800px;
   height: 50px;
   display: flex;
-  justify-content: space-around;
   margin-left: 50px;
   margin-top: 7px;
 }
 
 /*체크인/체크아웃/카테고리별 크기 및 색상*/
-.search_input {
-  width: 130px;
+.search_input1 {
   border: none;
+  width: 130px;
   background-color: #E8E0A1;
-  color: #515151;
+  text-align: left;  
+  position: absolute; 
+  top: 50%; 
+  right: -70px;
+  transform: translateY(-50%);
+
+  /*인풋이미지*/
+  background: url('../image/calendar2.png') no-repeat right /contain;
+  background-size: 15px 15px;
+  z-index: 0;
 }
 
-/*검색영역 중 input 고정글자 색상*/
-input::placeholder {
-  color: black;
+.search_input2 {
+  border: none;
+  width: 130px;
+  background-color: #E8E0A1;
+  text-align: left;  
+  position: absolute; 
+  top: 50%; 
+  right: -70px;
+  transform: translateY(-50%);
+
+  /*인풋이미지*/
+  background: url('../image/calendar2.png') no-repeat right /contain;
+  background-size: 15px 15px;
+  z-index: 0;
 }
 
-/*검색영역 중 이미지*/
-.search_box img {
-  width: 20px;
-  height: 20px;
+.search_input3 {
+  border: none;
+  width: 130px;
+  background-color: #E8E0A1;
+  text-align: left;  
+  position: absolute; 
+  top: 50%; 
+  right: -70px;
+  transform: translateY(-50%);
+
+  /*인풋이미지*/
+  background: url('../image/pin.png') no-repeat right /contain;
+  background-size: 15px 15px;
+  z-index: 0;
+}
+
+.search_input4 {
+  border: none;
+  width: 130px;
+  background-color: #E8E0A1;
+  text-align: left;  
+  position: absolute; 
+  top: 50%; 
+  right: -70px;
+  transform: translateY(-50%);
+
+  /*인풋이미지*/
+  background: url('../image/hashtag2.png') no-repeat right /contain;
+  background-size: 15px 15px;
+  z-index: 0;
+}
+
+.condition  {
   position: relative;
-  left: 35px;
-  top: 14px;
 }
+
+select {
+  appearance:none;
+}
+
+select option {
+  background-color: white;
+  font-size: 13px;
+}
+
+
+/*-----------------체크인아웃 검색 끝-----------------*/
+
+/*-----------------지역선택 모달창 시작-----------------*/
+
+#modal {
+  display: none;
+  position: absolute;
+  top: 20%; 
+  left: 36%;
+  width: 500px; /*임의의 가로 길이*/
+  z-index: 1;
+}
+
+#modal p {
+  margin: 0 auto;
+  font-size: 15px;
+  padding: 10px;
+}
+
+#modal .modal_content {
+  width: 50%;
+  height: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#modal .modal_layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+#result:hover {
+  cursor: pointer;
+}
+
+[placeholder]:empty:before {
+  display: block;
+  content: attr(placeholder);
+  color: #515151;
+  font-size: 14px;
+}
+
+.modal_content input[type="radio"] {
+  display: none;
+}
+
+.modal_content input[type="radio"] + label{
+  display: flex;
+  border:1px solid #eee;  
+  padding:0px 10px;
+  text-align:center;
+  height:35px;
+  line-height:33px;
+  cursor:pointer;
+}
+
+.modal_content input[type="radio"]:checked + label{
+  border:1px solid #B1D690;
+  background: #B1D690;
+  color: #fff;
+}
+
+#modal_close_btn {
+  width: 100px;
+  height: 25px;
+  border: none;
+  background-color: #7DB249;
+  color: white;
+  margin-top: 10px;
+}
+
+/*-----------------지역선택 모달창 끝-----------------*/
+
+/*-----------------검색바 검색버튼 시작-----------------*/
 
 /*검색영역의 검색버튼*/
 .search_btn {
@@ -297,7 +435,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-/*-----------------날짜/지역/카테고리 검색 끝-----------------*/
+/*-----------------검색바 검색버튼 끝-----------------*/
 
 /*-----------------특가상품 시작-----------------*/
 
@@ -342,7 +480,7 @@ input::placeholder {
 
 /*특가상품 가격*/
 .sale_cam_pr {
-  color: #f07a1c;
+  color: #F27226;
   font-size: 13px;
   font-weight: bold;
 }
@@ -502,7 +640,7 @@ input::placeholder {
   bottom: 110px;
   left: 55px;
   color: white;
-  opacity: 1; 
+  opacity: 1;
 }
 
 /*-----------------매거진 끝-----------------*/
@@ -563,3 +701,6 @@ footer {
 }
 
 /*-----------------푸터 끝-----------------*/
+
+
+

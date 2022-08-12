@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <% String id = (String)session.getAttribute("id"); %>
 
 
@@ -83,7 +82,7 @@
       <!-----------------프로필 끝----------------->
 	
       <!-----------------개인정보 시작----------------->
-
+		
       <div class="profile_reservationlist">
         <div class="alltabMenu">
 
@@ -104,6 +103,19 @@
 	            <div class="nick">
 	              <p>닉네임</p><input id='modify_btn2' name="nickname" type='text' value="${sessionScope.nickname}" disabled />
 	            </div>
+	            <div class="birth">
+	              <p>생년월일</p><input class='empty' type='text' value="${sessionScope.birthday }" disabled />
+	            </div>
+	          	<c:if test="${sessionScope.gender eq 'male'}">
+	            <div class="gender">
+	              <p>성별</p><input class='empty' type='text' value="남" disabled />
+	            </div>
+	          	</c:if>
+	         	<c:if test="${sessionScope.gender eq 'female'}">
+	            <div class="gender">
+	              <p>성별</p><input class='empty' type='text' value="여" disabled />
+	            </div>
+	          	</c:if>
 		  	</c:when>
 		  	<c:otherwise>
 		  	<form action="/update" method="post" onsubmit="disablesubmit()">
@@ -146,7 +158,8 @@
 	            <input class="empty" type='text' name="id" value="${member.id }" style="display:none"/>
 	
 	            <div class="btn">
-	              <button class="submit">수정한 내용 저장하기</button>
+	              <button class="submit"><p>수정한 내용 저장하기</p></button>
+	     	      <a href="/memberDelete" onclick="window.open(this.href, '_blank', 'width=400px, height=500px'); return false;"><button type="button" class="exit"><p>회원탈퇴하기</p></button></a>
 	            </div>
 	            </form>
 		  	</c:otherwise>
@@ -173,40 +186,30 @@
               <li>체크인</li>
               <li>체크아웃</li>
             </ul>
-
+			<c:forEach items="${list}" var="booking">
             <ul class="camplist">
-              <li>1</li>
-              <li>산넘고물건너</li>
-              <li>3명</li>
-              <li>1명</li>
-              <li>55,000</li>
-              <li>2022.07.26</li>
-              <li>2022.08.01</li>
-              <li>2022.08.03</li>
+              <li>${booking.reservid }</li>
+              <li>${booking.facltnm }</li>
+              <li>${booking.audult_no }명</li>
+              <li>${booking.child_no }명</li>
+              <li><fmt:formatNumber value="${booking.price}" pattern="#,###"/>원</li>
+              <li><fmt:formatDate value="${booking.reservday}" pattern="yyyy-MM-dd"/></li>
+              <li>${booking.checkin }</li>
+              <li>${booking.checkout }</li>
             </ul>
-
-            <ul class="camplist">
-              <li>2</li>
-              <li>캠핑매니아</li>
-              <li>2명</li>
-              <li>2명</li>
-              <li>75,000</li>
-              <li>2022.07.30</li>
-              <li>2022.08.05</li>
-              <li>2022.08.09</li>
+			</c:forEach>
+			<c:forEach items="${kakao}" var="kakaobooking">
+			<ul class="camplist">
+              <li>${kakaobooking.reservid }</li>
+              <li>${kakaobooking.facltnm }</li>
+              <li>${kakaobooking.audult_no }명</li>
+              <li>${kakaobooking.child_no }명</li>
+              <li><fmt:formatNumber value="${kakaobooking.price}" pattern="#,###"/>원</li>
+              <li><fmt:formatDate value="${kakaobooking.reservday}" pattern="yyyy-MM-dd"/></li>
+              <li>${kakaobooking.checkin }</li>
+              <li>${kakaobooking.checkout }</li>
             </ul>
-
-            <ul class="camplist">
-              <li>3</li>
-              <li>캠핑가든</li>
-              <li>1명</li>
-              <li>0명</li>
-              <li>45,000</li>
-              <li>2022.08.04</li>
-              <li>2022.09.01</li>
-              <li>2022.09.02</li>
-            </ul>
-
+			</c:forEach>
           </div>
         </div>
       </div>

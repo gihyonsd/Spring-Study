@@ -279,7 +279,6 @@ header {
   height: 500px;
 }
 
-
 #list>ul {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -297,28 +296,41 @@ header {
   /*이미지 가로 배치*/
 }
 
-.submit {
+.btn {
+  display: flex;
+}
+.btn a {
+	text-decoration: none;
+}
+
+.submit, .exit {
   width: 140px;
   height: 25px;
   display: flex;
   margin-top: 50px;
 }
 
-.submit:hover {
+.submit:hover, .exit:hover {
   cursor: pointer;
 }
 
-.btn .submit {
+.btn .submit, .btn .exit {
   color: black;
+}
+
+.submit p, .exit p {
+  font-size: 14px;
   text-align: center;
-  font-size: 15px;
+  line-height: 22px;
 }
 
 #list .camplist {
   background-color: white;
 }
 
-
+.camplist li {
+	vertical-align: middle; 
+}
 
 /*-----------------개인정보&예약내역 끝-----------------*/
 

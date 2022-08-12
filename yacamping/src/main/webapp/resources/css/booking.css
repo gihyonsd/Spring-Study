@@ -1,0 +1,212 @@
+/*헤드 타이틀 폰트*/
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*본문 폰트*/
+@font-face {
+  font-family: 'SUIT-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*----------------전체 & 공통 적용 시작-------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'SUIT-Regular';
+}
+
+a {
+  text-decoration: none;
+  color: #7DB249;
+  font-size: 14px;
+}
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 350px;
+  height: 445px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/*----------------전체 & 공통 적용 끝-------------*/
+
+
+/*----------------예약 내용 시작-------------*/
+
+.reservation {
+  display: inline;
+  margin: 0 auto;
+  border: 1px solid gainsboro;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.reservation img {
+  width: 300px;
+  height: 140px;
+  border-radius: 5px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add {
+  font-size: 13px;
+}
+
+/*----------------예약 내용 끝-------------*/
+
+
+/*----------------인원 시작-------------*/
+
+.box1 {
+  display: flex;
+  justify-content: center;
+}
+
+.person {
+  border: 1px solid gainsboro;
+  width: 45%;
+  display: flex;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  justify-content: center;
+  padding: 5px;
+}
+
+.division {
+  margin-right: 40px;
+}
+
+.count button {
+  width: 17px;
+  border: 1px solid gainsboro;
+}
+
+#number,
+#number1 {
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+  font-size: 13px;
+  border: none;
+}
+
+/*----------------인원 끝-------------*/
+
+
+/*----------------체크인아웃 시작-------------*/
+
+.box {
+  margin: 12px;
+  border-radius: 5px;
+  padding: 6px;
+  border: 1px solid gainsboro;
+}
+
+.inout {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.checkcontent {
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  width: 40%;
+  padding: 5px;
+}
+
+.check {
+  font-size: 12px;
+  color: gray;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.day {
+  border: 1px solid #F5F5F5;
+  border-radius: 20%;
+  width: 10%;
+  line-height: 350%;
+  font-size: 11px;
+}
+
+/*----------------체크인아웃 끝-------------*/
+
+
+/*----------------결제 금액 시작-------------*/
+
+.pay {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  border-top: 1px solid darkgrey;
+  border-bottom: 1px solid darkgrey;
+  padding: 3px;
+}
+
+.total {
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.won {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 25px;
+  color: #F27226;
+}
+
+/*----------------결제 금액 끝-------------*/
+
+
+/*----------------결제하기 버튼 시작-------------*/
+
+.nextbtn button {
+  width: 95%;
+  height: 30px;
+  border-radius: 3px;
+  background-color: #7DB249;
+  border-style: none;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  top: 15px;
+}
+
+.nextbtn button {
+  color: white;
+}
+
+.nextbtn button:hover {
+  cursor: pointer;
+}
+
+/*----------------결제하기 버튼 끝-------------*/

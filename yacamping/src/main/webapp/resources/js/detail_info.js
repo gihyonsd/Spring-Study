@@ -74,7 +74,7 @@ document.querySelector(".closeBtn").addEventListener("click", close);
 document.querySelector(".bg").addEventListener("click", close);
 
 /*카카오톡 공유*/
-Kakao.init('c34b277686c67e06eb17fc958097c2d6'); //js코드(kakao에서 받은것)
+Kakao.init('0f2b287d5c416736a802c07ae457f6e0'); //js코드(kakao에서 받은것)
             
 function sendLink() { // 카카오톡 공유하기
   Kakao.Link.sendDefault({

@@ -26,4 +26,7 @@ public class BoardVO {
 	private Date reservday;
 	private int price;
 	private String tel;
+	private String secondimageurl;
+	private String thirdimageurl;
+	private String firthimageurl;
 }

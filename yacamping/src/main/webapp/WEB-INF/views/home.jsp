@@ -96,7 +96,7 @@
 
         <!--카테고리 중 캠핑-->
         <div class="category_menu">
-          <a href="/board/list?type=T&keyword=&type=C&category=일반야영장"><img src="resources/image/camping_icon.png">
+          <a href="/board/list?type=T&keyword=&type=C&category=캠핑장"><img src="resources/image/camping_icon.png">
             <p class="menu_name">캠핑</p>
 
           </a>
@@ -131,22 +131,68 @@
 
         <div class="search_box">
           <!--체크인/체크아웃-->
- 		<input type="hidden" name="pageNum" value=1>
+        <input type="hidden" name="pageNum" value=1>
        	<input type="hidden" name="amount" value=4>
        	<input type="hidden" name="type" value="">
-        <input type="date" class="search_input" name="startDate" value='startDate' <c:out value="${pageMaker.cri.startDate}"/>>  
-        <input type="date" class="search_input" name="endDate" value='endDate' <c:out value="${pageMaker.cri.endDate}"/>> 
+          <div class="condition">
+            <input type="text" name="startDate" placeholder="체크인" onfocus="(this.type='date')" class="search_input1">
+          </div>
+          <div class="condition">
+            <input type="text" name="endDate" placeholder="체크아웃" onfocus="(this.type='date')" class="search_input2">
+          </div>
 
-        <!--지역선택-->
-        <img src="resources/image/pin.png"><input type="text" class="search_input" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>' placeholder="지역 선택">
-        <!--카테고리 선택-->
-        <img src="resources/image/hashtag.png"><input type="text" class="search_input" name="category"  value='<c:out value="${pageMaker.cri.category}"/>' placeholder="카테고리 선택">
-      </div>
-	  
+          <!--지역선택-->
+
+          <div class="condition">
+            <input id="result" name="keyword" placeholder='지역선택' class="search_input3" readonly>
+          </div>
+
+          <!--카테고리 선택-->
+          <div class="condition">
+            <select id="nation" name="category" class="search_input4">
+              <option value="">카테고리 선택</option>
+              <option value="캠핑장">캠핑장</option>
+              <option value="글램핑">글램핑</option>
+              <option value="카라반">카라반</option>
+              <option value="펜션">펜션</option>
+            </select>
+          </div>
+        </div>
+
         <!--검색버튼-->
         <button class="search_btn">검색</button>
       </div>
       </form>
+      <!--지역 검색 모달창-->
+      <div class="region_modal" id="modal">
+        <div class="modal_content">
+          <p>지역을 선택하세요</p>
+          <input type="radio" value="강원도" onclick='getregion(event)' name="keyword" id="id1"><label for="id1">강원도</label>
+          <input type="radio" value="경기도" onclick='getregion(event)' name="keyword" id="id2"><label for="id2">경기도</label>
+          <input type="radio" value="경상남도" onclick='getregion(event)' name="keyword" id="id3"><label
+            for="id3">경상남도</label>
+          <input type="radio" value="경상북도" onclick='getregion(event)' name="keyword" id="id4"><label
+            for="id4">경상북도</label>
+          <input type="radio" value="대구시" onclick='getregion(event)' name="keyword" id="id5"><label for="id5">대구시</label>
+          <input type="radio" value="부산시" onclick='getregion(event)' name="keyword" id="id6"><label for="id6">부산시</label>
+          <input type="radio" value="서울시" onclick='getregion(event)' name="keyword" id="id7"><label for="id7">서울시</label>
+          <input type="radio" value="울산시" onclick='getregion(event)' name="keyword" id="id8"><label for="id8">울산시</label>
+          <input type="radio" value="인천시" onclick='getregion(event)' name="keyword" id="id9"><label for="id9">인천시</label>
+          <input type="radio" value="전라남도" onclick='getregion(event)' name="keyword" id="id10"><label
+            for="id10">전라남도</label>
+          <input type="radio" value="전라북도" onclick='getregion(event)' name="keyword" id="id11"><label
+            for="id11">전라북도</label>
+          <input type="radio" value="제주도" onclick='getregion(event)' name="keyword" id="id12"><label
+            for="id12">제주도</label>
+          <input type="radio" value="충청남도" onclick='getregion(event)' name="keyword" id="id13"><label
+            for="id13">충청남도</label>
+          <input type="radio" value="충청북도" onclick='getregion(event)' name="keyword" id="id14"><label
+            for="id14">충청북도</label>
+
+          <input type="button" id="modal_close_btn" value="선택완료">
+        </div>
+        <div class="modal_layer" id="modal_layer"></div>
+      </div>
       <!-----------------날짜/지역/카테고리 검색 끝----------------->
 
       <!-----------------특가상품 시작----------------->
@@ -166,23 +212,23 @@
           <!--특가상품 1-->
           <div class="saletext">
             <a href="#">
-              <img class="sale_img" src="resources/image/a1.jpg">
+              <img class="sale_img" src="${data[0].firstimageurl }">
               <div class="saledetail">
-                <div class="sale_cam_title">오솔길 캠핑장</div>
-                <div class="sale_cam_ad">경북 경주시 산내면</div>
-                <div class="sale_cam_pr">35,000~</div>
+                <div class="sale_cam_title">${data[0].facltnm }</div>
+                <div class="sale_cam_ad">${data[0].addr1 }</div>
+                <div class="sale_cam_pr"><fmt:formatNumber value="${data[0].price}" pattern="#,###"/>원~</div>
               </div>
             </a>
           </div>
 
           <!--특가상품 2-->
           <div class="saletext">
-            <a href="#">
-              <img class="sale_img" src="resources/image/a2.jpg">
+            <a href="/board/get?campnum=${data[1].campnum}">
+              <img class="sale_img" src="${data[1].firstimageurl }">
               <div class="saledetail">
-                <div class="sale_cam_title">캠핑 플레이</div>
-                <div class="sale_cam_ad">경기 가평군 북면</div>
-                <div class="sale_cam_pr">45,000~</div>
+                <div class="sale_cam_title">${data[1].facltnm }</div>
+                <div class="sale_cam_ad">${data[1].addr1 }</div>
+                <div class="sale_cam_pr"><fmt:formatNumber value="${data[1].price}" pattern="#,###"/>원~</div>
               </div>
             </a>
           </div>
@@ -190,11 +236,11 @@
           <!--특가상품 3-->
           <div class="saletext">
             <a href="#">
-              <img class="sale_img" src="resources/image/a3.jpg">
+              <img class="sale_img" src="${data[2].firstimageurl }">
               <div class="saledetail">
-                <div class="sale_cam_title">바다풍경 캠핑장</div>
-                <div class="sale_cam_ad">경남 고성군 고류면</div>
-                <div class="sale_cam_pr">40,000~</div>
+                <div class="sale_cam_title">${data[2].facltnm }</div>
+                <div class="sale_cam_ad">${data[2].addr1 }</div>
+                <div class="sale_cam_pr"><fmt:formatNumber value="${data[2].price}" pattern="#,###"/>원~</div>
               </div>
             </a>
           </div>
@@ -202,11 +248,11 @@
           <!--특가상품 4-->
           <div class="saletext">
             <a href="#">
-              <img class="sale_img" src="resources/image/a4.jpg">
+              <img class="sale_img" src="${data[14].firstimageurl }">
               <div class="saledetail">
-                <div class="sale_cam_title">송어와 캠핑장</div>
-                <div class="sale_cam_ad">강원 평창군 용평면</div>
-                <div class="sale_cam_pr">55,000~</div>
+                <div class="sale_cam_title">${data[14].facltnm }</div>
+                <div class="sale_cam_ad">${data[14].addr1 }</div>
+                <div class="sale_cam_pr"><fmt:formatNumber value="${data[14].price}" pattern="#,###"/>원~</div>
               </div>
             </a>
           </div>
@@ -214,11 +260,11 @@
           <!--특가상품 5-->
           <div class="saletext">
             <a href="#">
-              <img class="sale_img" src="resources/image/a5.jpg">
+              <img class="sale_img" src="${data[18].firstimageurl }">
               <div class="saledetail">
-                <div class="sale_cam_title">캠핑드림</div>
-                <div class="sale_cam_ad">충북 태안군 근흥면</div>
-                <div class="sale_cam_pr">55,000~</div>
+                <div class="sale_cam_title">${data[18].facltnm }</div>
+                <div class="sale_cam_ad">${data[18].addr1 }</div>
+                <div class="sale_cam_pr"><fmt:formatNumber value="${data[18].price}" pattern="#,###"/>원~</div>
               </div>
             </a>
           </div>
@@ -243,20 +289,20 @@
         <div class="reco_content">
 
           <!--추천 캠핑장 링크 & 이미지-->
-          <a href="#"><img class="reco_img" src="resources/image/s3.jpg">
+          <a href="#"><img class="reco_img" src="${data[19].thirdimageurl }">
 
             <!--추천 캠핑장 설명-->
-            <p class="reco_title">럭셔리 글램핑 W 풀빌라</p>
-            <p class="reco_describe">산청으로 떠나는 하룻밤의 감성여행. 친절한 직원과 깨끗한 시설, 맛있는 음식, 즐거운 액티비티를 W 풀빌라에서 즐겨보세요!</p>
+            <p class="reco_title">${data[19].facltnm }</p>
+            <p class="reco_describe">${data[19].lineintro }</p>
             <div class="reco_hashtag">
               <div class="hashtag">#커플여행</div>
               <div class="hashtag">#럭셔리여행</div>
-              <div class="hashtag">#글램핑</div>
+              <div class="hashtag">#펜션</div>
               <div class="hashtag">#액티비티</div>
             </div>
             <!--추천 캠핑장 가격-->
             <div class="recommend_price">
-              <div class="reco_price">50,000원~</div>
+              <div class="reco_price"><fmt:formatNumber value="${data[18].price}" pattern="#,###"/>원~</div>
               <div class="reco_reservation">예약가능</div>
             </div>
             

@@ -1,11 +1,13 @@
 package com.spring.yacamping.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.spring.yacamping.domain.BoardVO;
 import com.spring.yacamping.domain.BookingVO;
+import com.spring.yacamping.domain.KakaoBookingVO;
 import com.spring.yacamping.mapper.BookingMapper;
 import com.spring.yacamping.service.BookingService;
 
@@ -27,5 +29,23 @@ public class BookingServiceImpl implements BookingService{
 	public void booking(BookingVO booking) {
 		log.info("booking");
 		mapper.insert(booking);
+	}
+
+	@Override
+	public void bookingkakao(BookingVO booking) {
+		log.info("bookingkakao.............");
+		mapper.insertkakao(booking);
+	}
+
+	@Override
+	public List<BookingVO> getBookingList(BookingVO booking) {
+		
+		return mapper.getBooking(booking);
+	}
+
+	@Override
+	public List<BookingVO> getKakaoList(KakaoBookingVO booking) {
+		
+		return mapper.getKakao(booking);
 	}
 }

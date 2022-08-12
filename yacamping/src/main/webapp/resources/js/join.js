@@ -17,6 +17,56 @@ function selectEmail(ele){
     }
 }
 
+// 유효성 검사
+function do_submit() {
+	 let id = document.getElementById("id");
+	 let password = document.getElementById("password");
+	 let name = document.getElementById("name");
+	 let nickname = document.getElementById("nickname");
+	 let birth = document.getElementById("birth");
+	 let r1 = document.getElementById("r1");
+	 let r2 = document.getElementById("r2");
+	 let r3 = document.getElementById("r3");
+	 let phone = document.getElementById("phone");
+	 let email1 = document.getElementById("email1");
+	 let email2 = document.getElementById("email2");
+	 if(id.value.length == 0) {
+		 alert('아이디를 입력하세요');
+		 return false;
+	 }
+	 if(password.value.length == 0) {
+		 alert('비밀번호를 입력하세요');
+		 return false;
+	 }
+	 if(name.value.length == 0) {
+		 alert('이름을 입력하세요');
+		 return false;
+	 }
+	 if(nickname.value.length == 0) {
+		 alert('닉네임을 입력하세요');
+		 return false;
+	 }
+	 if(birth.value.length == 0) {
+		 alert('생년월일을 선택하세요');
+		 return false;
+	 }
+	 if(!r1.checked && !r2.checked && !r3.checked) {
+		 alert('성별을 선택하세요');
+		 return false;
+	 }
+	 if(phone.value.length == 0) {
+		 alert('전화번호를 입력하세요');
+		 return false;
+	 }
+	 if(email1.value.length == 0) {
+		 alert('이메일을 입력하세요');
+		 return false;
+	 }
+	 if(email2.value.length == 0) {
+		 alert('도메인을 입력하거나 선택하세요');
+		 return false;
+	 }
+}
 
 //주소찾기 및 입력
 function sample6_execDaumPostcode() {
@@ -67,33 +117,37 @@ function sample6_execDaumPostcode() {
    }).open();
 }
 
-//비밀번호 재확인
-function check_pw(){
+//비밀번호 조건 불일치 시 alert창
+function check_pw() {
     var pw = document.getElementById('password').value;
-    var SC = ["1","2","3","4","5","6","7","8","9","0"];
+    var SC = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
     var check_SC = 0;
 
-    if(pw.length < 6 || pw.length > 16){
+    if (pw.length < 6 || pw.length > 16) {
         window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
-        document.getElementById('password').value='';
+        document.getElementById('password').value = '';
     }
-    for(var i=0;i<SC.length;i++){
-        if(pw.indexOf(SC[i]) != -1){
+    for (var i = 0; i < SC.length; i++) {
+        if (pw.indexOf(SC[i]) != -1) {
             check_SC = 1;
         }
     }
-    if(check_SC == 0){
+    if (check_SC == 0) {
         window.alert('숫자를 포함하여 비밀번호를 작성하여 주세요.')
-        document.getElementById('password').value='';
+        document.getElementById('password').value = '';
     }
-    if(document.getElementById('password').value !='' && document.getElementById('password2').value!=''){
-        if(document.getElementById('password').value==document.getElementById('password2').value){
-            document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-            document.getElementById('check').style.color='blue';
+}
+
+//비밀번호 재확인 시 일치, 불일치 확인 문구
+function check_pw2() {
+    if (document.getElementById('password').value != '' && document.getElementById('password2').value != '') {
+        if (document.getElementById('password').value == document.getElementById('password2').value) {
+            document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
+            document.getElementById('check').style.color = 'blue';
         }
-        else{
-            document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-            document.getElementById('check').style.color='red';
+        else {
+            document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
+            document.getElementById('check').style.color = 'red';
         }
     }
-} 
+}

@@ -21,6 +21,9 @@ public class BookingVO {
 	private int child_no;
 	private Date reservday;
 	private int totalprice;
+	private int price;
+	private String checkin;
+	private String checkout;
 	private String startDate;
 	private String endDate;
 }

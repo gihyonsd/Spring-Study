@@ -9,9 +9,9 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <!-- 베이스가 되는 패키지 이름 -->
-    <context:component-scan base-package="com.spring.yacamping.*"></context:component-scan>
+    <context:component-scan base-package="com.spring.yacamping"></context:component-scan>
 
-    <mybatis-spring:scan base-package="com.spring.yacamping.*"/>
+    <mybatis-spring:scan base-package="com.spring.yacamping"/>
 
     <context:annotation-config></context:annotation-config>
     

@@ -25,6 +25,10 @@ public class HomeController {
 	public String home(Locale locale, Model model,Criteria cri) {
 		List<BoardVO> list = service.getData(cri);
 		model.addAttribute("data", list);
+		Criteria setdate = new Criteria();
+		setdate.setStartDate(cri.getStartDate());
+		setdate.setEndDate(cri.getEndDate());
+		model.addAttribute("setdate", setdate);
 		return "home";
 	}
 	
