@@ -53,7 +53,7 @@
           <p class="division">아 동</p>
           <div class="count">
             <button id="down1">-</button>
-            <input type="text" id="number1" name="child_no" value="1">
+            <input type="text" id="number1" name="child_no" value="0">
             <button id="up1">+</button>
           </div>
         </div>

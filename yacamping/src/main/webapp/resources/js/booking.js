@@ -32,9 +32,9 @@ $(function () {
     var stat = $('#number1').val();
     var num = parseInt(stat, 10);
     num--;
-    if (num <= 0) {
+    if (num < 0) {
       alert('최소 1명 이상 예약하셔야 합니다.');
-      num = 1;
+      num = 0;
     }
     $('#number1').val(num);
   });
