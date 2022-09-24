@@ -4,6 +4,10 @@ package org.zerock.ex2.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.zerock.ex2.entity.Memo;
 
 
@@ -43,5 +47,18 @@ public class MemoRepositoryTests {
         Long mno = 100L;
 
         memoRepository.deleteById(mno);
+    }
+
+    @Test
+    public void testPaging() {
+
+        Sort sort = Sort.by("mno").descending();
+
+        Pageable pageable = PageRequest.of(0, 10, sort);
+
+        Page<Memo> result = memoRepository.findAll(pageable);
+
+        System.out.println("-------------------");
+
     }
 }
